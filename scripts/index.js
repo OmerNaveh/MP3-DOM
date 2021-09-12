@@ -3,6 +3,9 @@ Title.innerText= "My Cool Music Player";
 const theTitle=document.getElementById("title");
 theTitle.appendChild(Title);
 let playedsongID; //used in playsong function
+const outputSong= document.getElementById("songOutput");
+const playedSong= document.createElement("h2");
+outputSong.appendChild(playedSong);
 /**
  * Plays a song from the player.
  * Playing a song means changing the visual indication of the currently playing song.
@@ -16,16 +19,21 @@ function playSong(songId) {
     if(playedsongID===undefined)
     {
         playedsongID=generatedID;
+        playedSong.innerText= songplayedDet(GetsongById(songId));
     }
     else
     {
         let resetback= document.getElementById(playedsongID);
         resetback.style.backgroundColor= "white";
         playedsongID=generatedID;
+        playedSong.innerText= songplayedDet(GetsongById(songId));
     }
 
 }
-
+function songplayedDet(song)
+{
+    return ("Playing "+song.title+ " from " +song.album+" by "+song.artist+" | "+durationConvert(song.duration)+".")
+}
 
  // Creates a song DOM element based on a song object.
 function createSongElement({ id, title, album, artist, duration, coverArt }) {

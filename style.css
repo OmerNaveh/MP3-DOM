@@ -27,3 +27,7 @@ ul {
 #playlists{
     border-bottom: dotted 5px lightgoldenrodyellow;
 }
+#songOutput{
+    text-align: center;
+    
+}
