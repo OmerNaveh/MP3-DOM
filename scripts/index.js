@@ -8,22 +8,41 @@ function playSong(songId) {
     // Your code here
 }
 
-/**
- * Creates a song DOM element based on a song object.
- */
+
+ // Creates a song DOM element based on a song object.
 function createSongElement({ id, title, album, artist, duration, coverArt }) {
     const children = []
+    const ul= document.createElement("ul");
+    for(let i=0; i<5; i++)
+    {
+        if(arguments[i] === duration) //convert duration to mm:ss format
+        {
+            arguments[i] = durationConvert(duration);
+        }
+        let li= document.createElement("li");
+        li.innerHTML = arguments[i];
+        ul.appendChild(li);
+    }
+    children.push(ul);
     const classes = []
+    classes.push(["songs"])
     const attrs = { onclick: `playSong(${id})` }
     return createElement("div", children, classes, attrs)
 }
 
-/**
- * Creates a playlist DOM element based on a playlist object.
- */
+ // Creates a playlist DOM element based on a playlist object.
 function createPlaylistElement({ id, name, songs }) {
     const children = []
+    const ul= document.createElement("ul");
+    for(let i=0; i<3; i++)
+    {
+        let li= document.createElement("li");
+        li.innerHTML = arguments[i];
+        ul.appendChild(li);
+    }
+    children.push(ul);
     const classes = []
+    classes.push(["playlists"])
     const attrs = {}
     return createElement("div", children, classes, attrs)
 }
@@ -41,7 +60,30 @@ function createPlaylistElement({ id, name, songs }) {
  * @param {Object} attributes - the attributes for the new element
  */
 function createElement(tagName, children = [], classes = [], attributes = {}) {
-    // Your code here
+    const createdElement= document.createElement(tagName);
+    for(let childElement of children)
+    {
+        createdElement.appendChild(childElement);
+    }
+    createdElement.classList.add(classes);
+    const seperatekeys= Object.entries(attributes)
+    for (let key of seperatekeys)
+    {
+        createdElement.setAttribute(key[0],key[1]);
+    }
+    return createdElement;
+}
+// You can write more code below this line
+const songdiv= document.getElementById("songs");
+sortsongs(); //sorts songs by title
+PrintAllSongs();
+function PrintAllSongs()
+{
+    for(let song of player.songs)
+    {
+        const { id, title, album, artist, duration, coverArt}= song;
+        const songElem = createSongElement(id, title, album, artist, duration, coverArt);
+        songdiv.appendChild(songElem);
+    }
 }
 
-// You can write more code below this line

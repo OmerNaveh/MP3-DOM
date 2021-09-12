@@ -62,3 +62,38 @@ const player = {
         { id: 5, name: "Israeli", songs: [4, 5] },
     ],
 }
+
+
+function durationConvert(duration) // converts duration value to mm/ss
+{
+  
+  if(typeof(duration)!=="number") //if duration is not a number
+    {
+    throw "not a suitable number"; 
+    }
+  else
+    {
+      let min = "";
+    if (Math.floor(duration/60)>=10) min = `${Math.floor(duration/60)}`;
+    if (Math.floor(duration/60)>=1 && Math.floor(duration/60)<10) min = `0${Math.floor(duration/60)}`;
+    if (Math.floor(duration/60)==0) min = "00";
+    let sec = "";
+    if ((duration%60)>=10) sec = `${duration%60}`;
+    if ((duration%60)>=1 && (duration%60)<10) sec = `0${duration%60}`;
+    if ((duration%60)==0) sec = `00`;
+    return min+":"+sec;    
+    }
+}
+function sortsongs()
+{
+     player.songs.sort(
+         (a,b) => 
+         {
+            if(a["title"].toLowerCase()<b["title"].toLowerCase())
+            {
+                return -1;; //sort by title
+            } 
+            return 1;
+        })
+            
+}
