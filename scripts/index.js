@@ -1,4 +1,8 @@
-
+const Title= document.createElement("h1");
+Title.innerText= "My Cool Music Player";
+const theTitle=document.getElementById("title");
+theTitle.appendChild(Title);
+let playedsongID; //used in playsong function
 /**
  * Plays a song from the player.
  * Playing a song means changing the visual indication of the currently playing song.
@@ -6,7 +10,20 @@
  * @param {String} songId - the ID of the song to play
  */
 function playSong(songId) {
-    // Your code here
+    const generatedID= "this"+songId
+    const div= document.getElementById(generatedID);
+    div.style.backgroundColor= "green";
+    if(playedsongID===undefined)
+    {
+        playedsongID=generatedID;
+    }
+    else
+    {
+        let resetback= document.getElementById(playedsongID);
+        resetback.style.backgroundColor= "white";
+        playedsongID=generatedID;
+    }
+
 }
 
 
@@ -29,8 +46,9 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     ul.appendChild(a);
     children.push(ul);
     const classes = []
-    classes.push(["songs"])
-    const attrs = { onclick: `playSong(${id})` }
+    classes.push(["songs"]);
+    const generatedID= "this"+ arguments[0]
+    const attrs = { onclick:`playSong(${arguments[0]})`, id:generatedID} //defined id to every div so it can be used in playsong function
     return createElement("div", children, classes, attrs)
 }
 
@@ -105,4 +123,3 @@ function PrintAllPlaylists()
         playlistDiv.appendChild(playlistElem);
     }
 }
-

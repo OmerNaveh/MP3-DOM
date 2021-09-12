@@ -10,3 +10,20 @@ ul {
     list-style-type: none;
    
   }
+  img{
+      height: 50px;
+      width: 50px;
+  }
+#title{
+    text-align: center;
+    font-size: 20px;
+    text-decoration: line-through underline;
+    color: darkturquoise;
+
+}
+#songs{
+    border: dotted 5px lightgoldenrodyellow;
+}
+#playlists{
+    border-bottom: dotted 5px lightgoldenrodyellow;
+}
