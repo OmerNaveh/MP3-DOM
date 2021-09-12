@@ -97,3 +97,15 @@ function sortsongs()
         })
             
 }
+function sortplaylists()
+{
+    player.playlists.sort(
+        (a,b)=> {
+            if(a["name"].toLowerCase()<b["name"].toLowerCase())
+            {
+                return -1;
+            } 
+            return 1;
+            } 
+            ); //sort by name
+}

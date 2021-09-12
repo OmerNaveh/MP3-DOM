@@ -75,8 +75,11 @@ function createElement(tagName, children = [], classes = [], attributes = {}) {
 }
 // You can write more code below this line
 const songdiv= document.getElementById("songs");
+const playlistDiv= document.getElementById("playlists")
 sortsongs(); //sorts songs by title
+sortplaylists(); //sorts playlists by name
 PrintAllSongs();
+PrintAllPlaylists();
 function PrintAllSongs()
 {
     for(let song of player.songs)
@@ -84,6 +87,15 @@ function PrintAllSongs()
         const { id, title, album, artist, duration, coverArt}= song;
         const songElem = createSongElement(id, title, album, artist, duration, coverArt);
         songdiv.appendChild(songElem);
+    }
+}
+function PrintAllPlaylists()
+{
+    for(let playlist of player.playlists)
+    {
+        const { id, name, songs}= playlist;
+        const playlistElem = createPlaylistElement(id, name, songs);
+        playlistDiv.appendChild(playlistElem);
     }
 }
 
