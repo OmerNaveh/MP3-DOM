@@ -109,3 +109,24 @@ function sortplaylists()
             } 
             ); //sort by name
 }
+function playlistDuration(id) {
+    let sum=0;
+    const playlistSongs=GetPlaylistById(id)["songs"]; //indicates songs array
+    for(let i of playlistSongs) //goes through all song id in array
+    {
+      let songduration= GetsongById(i)["duration"]; //gets the songs duration 
+      sum+=songduration;
+    }
+    
+      return sum;
+    }
+function GetPlaylistById(id) //return playlist object by id
+{
+  let playObj= player.playlists.find(x=> x["id"]===id);
+  return playObj;
+}
+function GetsongById(id) //return song object by id
+{
+  let songObj= player.songs.find(x=> x["id"]===id);
+  return songObj;
+}

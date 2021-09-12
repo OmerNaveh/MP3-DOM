@@ -1,3 +1,4 @@
+
 /**
  * Plays a song from the player.
  * Playing a song means changing the visual indication of the currently playing song.
@@ -15,14 +16,17 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     const ul= document.createElement("ul");
     for(let i=0; i<5; i++)
     {
-        if(arguments[i] === duration) //convert duration to mm:ss format
+        if(arguments[i] === arguments[4]) //convert duration to mm:ss format
         {
-            arguments[i] = durationConvert(duration);
+            arguments[i] = durationConvert(arguments[4]);
         }
         let li= document.createElement("li");
         li.innerHTML = arguments[i];
         ul.appendChild(li);
     }
+    let a= document.createElement("img");
+    a.src= arguments[5];
+    ul.appendChild(a);
     children.push(ul);
     const classes = []
     classes.push(["songs"])
@@ -40,6 +44,9 @@ function createPlaylistElement({ id, name, songs }) {
         li.innerHTML = arguments[i];
         ul.appendChild(li);
     }
+    let li= document.createElement("li");
+    li.innerHTML = durationConvert(playlistDuration(arguments[0]));  //add mm:ssdurationto playlist list
+    ul.appendChild(li);
     children.push(ul);
     const classes = []
     classes.push(["playlists"])
