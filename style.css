@@ -1,1 +1,12 @@
-/* Your code here */
+.divisions{
+    margin: 2px;
+    text-align: center;
+}
+div{
+    padding: 2px;
+}
+
+ul {
+    list-style-type: none;
+   
+  }
