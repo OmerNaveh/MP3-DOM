@@ -15,7 +15,7 @@ outputSong.appendChild(playedSong);
 function playSong(songId) {
     const generatedID= "this"+songId
     const div= document.getElementById(generatedID);
-    div.style.backgroundColor= "green";
+    div.style.borderLeft="thin dotted green";
     if(playedsongID===undefined)
     {
         playedsongID=generatedID;
@@ -24,7 +24,7 @@ function playSong(songId) {
     else
     {
         let resetback= document.getElementById(playedsongID);
-        resetback.style.backgroundColor= "white";
+        resetback.style.borderLeft="none";
         playedsongID=generatedID;
         playedSong.innerText= songplayedDet(GetsongById(songId));
     }
@@ -96,7 +96,14 @@ function createElement(tagName, children = [], classes = [], attributes = {}) {
     const createdElement= document.createElement(tagName);
     for(let childElement of children)
     {
-        createdElement.appendChild(childElement);
+        if(typeof childElement==="string")
+        {
+            createdElement.textContent=childElement;
+        }
+        else
+        {
+            createdElement.appendChild(childElement);
+        }
     }
     createdElement.classList.add(classes);
     const seperatekeys= Object.entries(attributes)
