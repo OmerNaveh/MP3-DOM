@@ -109,6 +109,11 @@ function sortplaylists()
             } 
             ); //sort by name
 }
+function GetSongIndexById(id) //get index of song in songs array
+{
+  let songIndex= player.songs.indexOf(GetsongById(id));
+  return songIndex;
+}
 function playlistDuration(id) {
     let sum=0;
     const playlistSongs=GetPlaylistById(id)["songs"]; //indicates songs array
