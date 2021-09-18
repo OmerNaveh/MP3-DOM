@@ -88,7 +88,10 @@ function randomID() //generated random id not existing in player songs
 
 function addSong({ title, album, artist, duration, coverArt }) {
     const newID= randomID();
+    console.log(coverArt);
     const newSong=createSongElement(newID,title,album,artist,duration, coverArt);
+    const newSongAtt= {id:newID,title, album, artist, duration, coverArt};
+    player.songs.push(newSongAtt);
     songdiv.append(newSong);
 }
 
@@ -119,13 +122,14 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     const ul= document.createElement("ul");
     for(let i=0; i<5; i++)
     {
-        if(arguments[i] === arguments[4]) //convert duration to mm:ss format
-        {
-            arguments[i] = durationConvert(arguments[4]);
-        }
-        let li= document.createElement("li");
-        li.innerHTML = arguments[i];
-        ul.appendChild(li);
+
+            if(arguments[i] === arguments[4]) //convert duration to mm:ss format
+            {
+                arguments[i] = durationConvert(arguments[4]);
+            }
+            let li= document.createElement("li");
+            li.innerText = arguments[i];
+            ul.appendChild(li);
     }
     let image= document.createElement("img");
     image.src= arguments[5];
@@ -197,9 +201,9 @@ function createElement(tagName, children = [], classes = [], attributes = {}, ev
     }
     createdElement.classList.add(classes);
     const seperatekeys= Object.entries(attributes)
-    for (let key of seperatekeys)
+    for (let [att, value] of seperatekeys)
     {
-        createdElement.setAttribute(key[0],key[1]);
+        createdElement.setAttribute(`${att}`, `${value}`);
     }
     return createdElement;
 }
@@ -241,10 +245,10 @@ if(e.target.id==="add-button")
     const album = document.getElementsByTagName("input")[1].value;
     const artist = document.getElementsByTagName("input")[2].value;
     let duration = document.getElementsByTagName("input")[3].value;
-    const coverart = document.getElementsByTagName("input")[4].value;
+    const coverArt = document.getElementsByTagName("input")[4].value;
     //convert duration from string mm:ss format to number
     duration = parseInt(duration.slice(0,Math.floor(duration.length/2)))*60+parseInt(duration.slice(Math.ceil(duration.length/2)));
-    addSong({title,album,artist,duration,coverart});
+    addSong({title,album,artist,duration,coverArt});
 }
 else if(e.target.id.includes("Removebtn"))
 {
