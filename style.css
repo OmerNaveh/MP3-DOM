@@ -1,1 +1,72 @@
-/* Your code here */
+body{
+    text-align: center;
+    background: linear-gradient(to right, #649173, #dbd5a4);
+}
+ul {
+    list-style-type: none;
+    margin-left: -2rem;
+  }
+  
+  img{
+      height: 50px;
+      width: 50px;
+  }
+
+#title{
+    text-align: center;
+    font-size: 20px;
+    text-decoration: line-through underline;
+    color: darkturquoise;
+
+}
+#songs{
+    border: dotted 5px lightgoldenrodyellow;
+    display: flex;
+    flex-wrap: wrap;
+}
+#playlists{
+    border-bottom: dotted 5px lightgoldenrodyellow;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+#songOutput{
+    text-align: center;   
+}
+h1{
+    font-size: 30px;
+}
+h2{
+    font-size: 18px;
+}
+li{
+    font-size: 12px;
+}
+.songs{
+    width: 13%;
+    border: thin solid black;
+    margin: 0.3rem 0.8rem;
+    border-radius: 1rem;
+}
+.songs:hover{
+    background-color: lightpink;
+}
+.playlists{
+    border: thin solid black;
+    border-radius: 1rem;
+    width: 30%;
+    margin: 0.3rem 8rem;
+}
+button{
+    cursor: pointer;
+    background-color: lightskyblue;
+}
+button:hover{
+    background-color: navy;
+}
+.songs button
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.3rem;
+}
